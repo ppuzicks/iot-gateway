@@ -1,0 +1,14 @@
+Index: u-boot-2021.07/arch/arm/dts/Makefile
+===================================================================
+--- u-boot-2021.07.orig/arch/arm/dts/Makefile
++++ u-boot-2021.07/arch/arm/dts/Makefile
+@@ -562,7 +562,8 @@ dtb-$(CONFIG_MACH_SUN7I) += \
+ 	sun7i-a20-primo73.dtb \
+ 	sun7i-a20-wexler-tab7200.dtb \
+ 	sun7i-a20-wits-pro-a20-dkt.dtb \
+-	sun7i-a20-yones-toptech-bd1078.dtb
++	sun7i-a20-yones-toptech-bd1078.dtb \
++	sun7i-a20-marsboard.dtb
+ dtb-$(CONFIG_MACH_SUN8I_A23) += \
+ 	sun8i-a23-evb.dtb \
+ 	sun8i-a23-gt90h-v4.dtb \
