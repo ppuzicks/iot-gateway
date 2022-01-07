@@ -18,6 +18,7 @@ BR2_TARGET_GENERIC_GETTY_PORT="ttyS0"
 BR2_ROOTFS_POST_BUILD_SCRIPT="$(BR2_EXTERNAL_PPUZICKS_PATH)/board/haoyu/a20_marsboard/post-build.sh"
 BR2_ROOTFS_POST_IMAGE_SCRIPT="support/scripts/genimage.sh"
 BR2_ROOTFS_POST_SCRIPT_ARGS="-c $(BR2_EXTERNAL_PPUZICKS_PATH)/board/haoyu/a20_marsboard/genimage.cfg"
+BR2_ROOTFS_OVERLAY="$(BR2_EXTERNAL_PPUZICKS_PATH)/board/haoyu/a20_marsboard/rootfs_overlay"
 
 # kernel
 BR2_LINUX_KERNEL=y
