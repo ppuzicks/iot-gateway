@@ -7,6 +7,7 @@ it will bring-up the board, and allow access through the serial console.
 
 Bananapi M2 Zero link:
 http://www.banana-pi.org/m2z.html
+https://wiki.banana-pi.org/Banana_Pi_BPI-M2_ZERO
 
 This configuration uses U-Boot mainline and kernel mainline.
 
