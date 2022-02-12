@@ -10,5 +10,5 @@ $ git clone https://github.com/ppuzicks/buildroot-external.git
 $ cd buildroot-external
 $ git submodule update --init
 $ cd buildroot
-$ BR2_EXTERNAL=../ make haoyu_a20_marsboard_defconfig
+$ BR2_EXTERNAL=../ make O=<build-dir> haoyu_a20_marsboard_defconfig
 ```
