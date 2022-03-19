@@ -12,3 +12,9 @@ $ git submodule update --init
 $ cd buildroot
 $ BR2_EXTERNAL=../ make O=<build-dir> haoyu_a20_marsboard_defconfig
 ```
+
+#### Rebuild boot.scr
+``` shell
+# Generate the uboot script
+$ ubootName/tools/mkimage -C none -A arm -T script -d $BR2_EXTERNAL_PATH/board/RK3308/boot.cmd $BINARIES_DIR/boot.scr
+```
