@@ -141,7 +141,7 @@
 	mmc-pwrseq = <&wifi_pwrseq>;
 	bus-width = <4>;
 	non-removable;
-	status = "okay";
+	status = "disable";
 
 	brcm: sdio-wifi@1 {
 		reg = <1>;
