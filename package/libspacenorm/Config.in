@@ -1,0 +1,2 @@
+config BR2_PACKAGE_LIB_SPACENORM
+  bool "Library for SpaceNorm"

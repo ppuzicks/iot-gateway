@@ -1,0 +1,5 @@
+config BR2_PACKAGE_PLOG
+  bool "plog"
+  depends on BR2_INSTALL_LIBSTDCPP
+  help
+    Portable, simple and extensible C++ logging library

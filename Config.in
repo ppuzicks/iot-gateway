@@ -1,0 +1,5 @@
+source "$BR2_EXTERNAL_PPUZICKS_PATH/package/le-gateway/Config.in"
+source "$BR2_EXTERNAL_PPUZICKS_PATH/package/libspacenorm/Config.in"
+source "$BR2_EXTERNAL_PPUZICKS_PATH/package/plog/Config.in"
+source "$BR2_EXTERNAL_PPUZICKS_PATH/package/nlohmannjson/Config.in"
+source "$BR2_EXTERNAL_PPUZICKS_PATH/package/sdbuscpp/Config.in"

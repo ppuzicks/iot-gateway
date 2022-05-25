@@ -1,0 +1,2 @@
+config BR2_PACKAGE_MESH_GATEWAY
+  bool "Bluetooth Mesh Gateway for SpaceNorm"

@@ -1,0 +1,4 @@
+config BR2_PACKAGE_LE_GATEWAY
+  bool "LE Gateway"
+  help
+    Bluetooth LE Gateway for HomeSensor

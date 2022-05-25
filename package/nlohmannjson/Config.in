@@ -1,0 +1,5 @@
+config BR2_PACKAGE_NLOHMANNJSON
+  bool "nlohmann json"
+  depends on BR2_INSTALL_LIBSTDCPP
+  help
+    JSON for Modern C++
