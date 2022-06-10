@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<node name="/">
+  <interface name="net.connman.Notification">
+    <method name="Release"/>
+    <method name="Update">
+      <arg name="settings" type="a{sv}" direction="in"/>
+    </method>
+  </interface>
+  <interface name="net.connman.Session">
+    <method name="Destroy"/>
+    <method name="Connect"/>
+    <method name="Disconnect"/>
+    <method name="Change">
+      <arg name="name" type="s" direction="in"/>
+      <arg name="value" type="v" direction="in"/>
+    </method>
+  </interface>
+</node>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<node name="/">
+  <interface name="net.connman.Manager">
+    <method name="GetProperties">
+      <arg type="a{sv}" name="properties" direction="out"/>
+    </method>
+    <method name="SetProperty">
+      <arg type="s" name="name" direction="in"/>
+      <arg type="v" name="value" direction="in"/>
+    </method>
+    <method name="GetTechnologies">
+      <arg type="a(oa{sv})" name="technologies" direction="out"/>
+    </method>
+    <method name="GetServices">
+      <arg type="a(oa{sv})" name="services" direction="out"/>
+    </method>
+    <method name="GetPeers">
+      <arg type="a(oa{sv})" name="peers" direction="out"/>
+    </method>
+    <method name="GetTetheringClients">
+      <arg type="as" name="clients" direction="out"/>
+    </method>
+    <method name="RegisterAgent">
+      <arg type="o" name="path" direction="in"/>
+    </method>
+    <method name="UnregisterAgent">
+      <arg type="o" name="path" direction="in"/>
+    </method>
+    <method name="RegisterCounter">
+      <arg type="o" name="path" direction="in"/>
+      <arg type="u" name="accuracy" direction="in"/>
+      <arg type="u" name="period" direction="in"/>
+    </method>
+    <method name="UnregisterCounter">
+      <arg type="o" name="path" direction="in"/>
+    </method>
+    <method name="CreateSession">
+      <arg type="o" name="session" direction="out"/>
+      <arg type="a{sv}" name="settings" direction="in"/>
+      <arg type="o" name="notifier" direction="in"/>
+    </method>
+    <method name="DestroySession">
+      <arg type="o" name="session" direction="in"/>
+    </method>
+    <method name="RequestPrivateNetwork">
+      <arg type="o" name="path" direction="out"/>
+      <arg type="a{sv}" name="settings" direction="out"/>
+      <arg type="h" name="fd" direction="out"/>
+    </method>
+    <method name="ReleasePrivateNetwork">
+      <arg type="o" name="path" direction="in"/>
+    </method>
+    <method name="RegisterPeerService">
+      <arg type="a{sv}" name="specification" direction="in"/>
+      <arg type="b" name="master" direction="in"/>
+    </method>
+    <method name="UnregisterPeerService">
+      <arg type="a{sv}" name="specification" direction="in"/>
+    </method>
+    <signal name="TechnologyAdded">
+      <arg type="o" name="path"/>
+      <arg type="a{sv}" name="properties"/>
+    </signal>
+    <signal name="TechnologyRemoved">
+      <arg type="o" name="path"/>
+    </signal>
+    <signal name="ServiceChanged">
+      <arg type="a(oa{sv})" name="services"/>
+      <arg type="ao" name="removed"/>
+    </signal>
+    <signal name="PeerChanged">
+      <arg type="a(oa{sv})" name="peers"/>
+      <arg type="ao" name="removed"/>
+    </signal>
+    <signal name="TetheringClientsChanged">
+      <arg type="as" name="clients"/>
+      <arg type="as" name="removed"/>
+    </signal>
+    <signal name="PropertyChanged">
+      <arg type="s" name="name"/>
+      <arg type="v" name="value"/>
+    </signal>
+    <property name="State" type="s" access="read"/>
+    <property name="OfflineMode" type="b" access="readwrite"/>
+  </interface>
+</node>

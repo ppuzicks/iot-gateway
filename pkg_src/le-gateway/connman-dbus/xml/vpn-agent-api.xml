@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<node name="/">
+  <interface name="net.connman.vpn.Agent">
+    <method name="Release"/>
+    <method name="ReportError">
+      <arg name="service" type="o" direction="in"/>
+      <arg name="error" type="s" direction="in"/>
+    </method>
+    <method name="RequestInput">
+      <arg name="service" type="o" direction="in"/>
+      <arg name="fields" type="a{sv}" direction="in"/>
+      <arg name="field" type="a{sv}" direction="out"/>
+    </method>
+    <method name="Cancel"/>
+  </interface>
+</node>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<node name="/">
+  <interface name="net.connman.Peer">
+    <method name="Connect"/>
+    <method name="Disconnect"/>
+    <signal name="PropertyChanged">
+      <arg name="name" type="s"/>
+      <arg name="value" type="v"/>
+    </signal>
+    <property name="State" type="s" access="read"/>
+    <property name="Name" type="s" access="read"/>
+    <property name="IPv4" type="a{sv}" access="read"/>
+    <property name="Services" type="aa{sv}" access="read"/>
+  </interface>
+</node>

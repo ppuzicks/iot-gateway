@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<node name="/">
+  <interface name="net.connman.Counter">
+    <method name="Release"/>
+    <method name="Usage">
+      <arg name="service" type="o" direction="in"/>
+      <arg name="home" type="a{sv}" direction="in"/>
+      <arg name="roaming" type="a{sv}" direction="in"/>
+    </method>
+  </interface>
+</node>

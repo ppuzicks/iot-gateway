@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<node name="/">
+  <interface name="net.connman.vpn.Connection">
+    <method name="GetProperties"/>
+    <method name="SetProperty">
+      <arg name="name" type="s" direction="in"/>
+      <arg name="value" type="v" direction="in"/>
+    </method>
+    <method name="ClearProperty">
+      <arg name="name" type="s" direction="in"/>
+    </method>
+    <method name="Connect"/>
+    <method name="Connect2">
+      <arg name="dbus_sender" type="s" direction="in"/>
+    </method>
+    <method name="Disconnect"/>
+    <signal name="PropertyChanged">
+      <arg name="name" type="s"/>
+      <arg name="value" type="v"/>
+    </signal>
+    <property name="State" type="s" access="read"/>
+    <property name="Type" type="s" access="read"/>
+    <property name="Name" type="s" access="read"/>
+    <property name="Domain" type="s" access="read"/>
+    <property name="Host" type="s" access="read"/>
+    <property name="Immutable" type="b" access="read"/>
+    <property name="SplitRouting" type="b" access="read"/>
+    <property name="Index" type="i" access="read"/>
+    <property name="IPv4" type="a{sv}" access="read"/>
+    <property name="IPv6" type="a{sv}" access="read"/>
+    <property name="Nameservers" type="as" access="read"/>
+    <property name="UserRoutes" type="aa{sv}" access="read"/>
+    <property name="ServerRoutes" type="aa{sv}" access="read"/>
+    <property name="AuthErrorLimit" type="s" access="read"/>
+  </interface>
+</node>

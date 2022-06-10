@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<node name="/">
+  <interface name="net.connman.vpn.Manager">
+    <method name="Create">
+      <arg name="settings" type="a{sv}" direction="in"/>
+    </method>
+    <method name="Remove">
+      <arg name="vpn" type="o" direction="in"/>
+    </method>
+    <method name="GetConnections">
+      <arg name="connection" type="a(oa{sv})" direction="out"/>
+    </method>
+    <method name="RegisterAgent">
+      <arg name="path" type="o" direction="in"/>
+    </method>
+    <method name="UnregisterAgent">
+      <arg name="path" type="o" direction="in"/>
+    </method>
+    <signal name="ConnectionAdded">
+      <arg name="path" type="o"/>
+      <arg name="properties" type="a{sv}"/>
+    </signal>
+    <signal name="ConnectionRemoved">
+      <arg name="path" type="o"/>
+    </signal>
+  </interface>
+</node>
