@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<node>
+  <interface name="org.bluez.AgentManager1">
+    <method name="RegisterAgent">
+      <arg name="agent" type="o" direction="in"/>
+      <arg name="capability" type="o" direction="in"/>
+    </method>
+    <method name="UnregisterAgent">
+      <arg name="agent" type="o" direction="in"/>
+    </method>
+    <method name="RequestDefaultAgent">
+      <arg name="agent" type="o" direction="in"/>
+    </method>
+  </interface>
+  <interface name="org.bluez.Agent1">
+    <method name="Release"/>
+    <method name="RequestPinCode">
+      <arg name="device" type="o" direction="in"/>
+    </method>
+    <method name="DisplayPinCode">
+      <arg name="device" type="o" direction="in"/>
+      <arg name="pincode" type="s" direction="in"/>
+    </method>
+    <method name="RequestPassKey">
+      <arg name="device" type="o" direction="in"/>
+      <arg name="key" type="u" direction="out"/>
+    </method>
+    <method name="DisplayPassKey">
+      <arg name="device" type="o" direction="in"/>
+      <arg name="passkey" type="u" direction="in"/>
+      <arg name="entered" type="q" direction="in"/>
+    </method>
+    <method name="RequestConfirmation">
+      <arg name="device" type="o" direction="in"/>
+      <arg name="passkey" type="u" direction="in"/>
+    </method>
+    <method name="RequestAuthorization">
+      <arg name="device" type="o" direction="in"/>
+    </method>
+    <method name="AuthorizeService">
+      <arg name="device" type="o" direction="in"/>
+      <arg name="uuid" type="s" direction="in"/>
+    </method>
+    <method name="Cancel"/>
+  </interface>
+
+</node>

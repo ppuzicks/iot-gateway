@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<node>
+  <interface name="org.bluez.Network1">
+    <method name="Connect">
+      <arg name="uuid" type="s" direction="in"/>
+      <arg name="iface" type="s" direction="out"/>
+    </method>
+    <method name="Disconnect"/>
+    <property name="Connected" type="b" access="read"/>
+    <property name="Interface" type="s" access="read"/>
+    <property name="UUID" type="s" access="read"/>
+  </interface>
+  <interface name="org.bluez.NetworkServer1">
+    <method name="Register">
+      <arg name="uuid" type="s" direction="in"/>
+      <arg name="bridge" type="s" direction="in"/>
+    </method>
+    <method name="Unregister">
+      <arg name="uuid" type="s" direction="in"/>
+    </method>
+  </interface>
+</node>

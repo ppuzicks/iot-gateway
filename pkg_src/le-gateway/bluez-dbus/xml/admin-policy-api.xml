@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<node>
+  <interface name="org.bluez.AdminPolicySet1">
+    <method name="SetServiceAllowList">
+      <arg name="UUIDs" type="as" direction="in"/>
+    </method>
+  </interface>
+  <interface name="org.bluez.AdminPolicyStatus1">
+    <property name="ServiceAllowList" type="as" access="read"/>
+    <property name="IsAffectedByPolicy" type="b" access="read"/>
+  </interface>
+</node>

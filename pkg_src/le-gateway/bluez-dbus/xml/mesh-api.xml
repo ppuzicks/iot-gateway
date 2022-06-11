@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<node>
+  <interface name="org.bluez.mesh.Network1">
+    <method name="Join">
+      <arg name="app_root" type="o" direction="in"/>
+      <arg name="uuid" type="ay" direction="in"/>
+    </method>
+    <method name="Cancel"/>
+    <method name="Attach">
+      <arg name="app_root" type="o" direction="in"/>
+      <arg name="token" type="t" direction="in"/>
+      <arg name="node" type="o" direction="out"/>
+      <arg name="configuration" type="a(ya(q{sv}))" direction="out"/>
+    </method>
+    <method name="Leave">
+      <arg name="token" type="t" direction="in"/>
+    </method>
+    <method name="CreateNetwork">
+      <arg name="app_root" type="o" direction="in"/>
+      <arg name="uuid" type="ay" direction="in"/>
+    </method>
+    <method name="Import">
+      <arg name="app_root" type="o" direction="in"/>
+      <arg name="uuid" type="ay" direction="in"/>
+      <arg name="dev_key" type="ay" direction="in"/>
+      <arg name="net_key" type="ay" direction="in"/>
+      <arg name="net_index" type="q" direction="in"/>
+      <arg name="flags" type="{sv}" direction="in"/>
+      <arg name="iv_index" type="u" direction="in"/>
+      <arg name="unicast" type="q" direction="in"/>
+    </method>
+  </interface>
+  <interface name="org.bluez.mesh.Node1">
+    <method name="Send">
+      <arg name="element_path" type="o" direction="in"/>
+      <arg name="destination" type="q" direction="in"/>
+      <arg name="key_index" type="q" direction="in"/>
+      <arg name="options" type="{sv}" direction="in"/>
+      <arg name="data" type="ay" direction="in"/>
+    </method>
+    <method name="DevKeySend">
+      <arg name="element_path" type="o" direction="in"/>
+      <arg name="destination" type="q" direction="in"/>
+      <arg name="remote" type="b" direction="in"/>
+      <arg name="net_index" type="q" direction="in"/>
+      <arg name="options" type="{sv}" direction="in"/>
+      <arg name="data" type="ay" direction="in"/>
+    </method>
+    <method name="AddNetKey">
+      <arg name="element_path" type="o" direction="in"/>
+      <arg name="destination" type="q" direction="in"/>
+      <arg name="subnet_index" type="q" direction="in"/>
+      <arg name="net_index" type="q" direction="in"/>
+      <arg name="update" type="b" direction="in"/>
+    </method>
+     <method name="AddAppKey">
+      <arg name="element_path" type="o" direction="in"/>
+      <arg name="destination" type="q" direction="in"/>
+      <arg name="app_index" type="q" direction="in"/>
+      <arg name="net_index" type="q" direction="in"/>
+      <arg name="update" type="b" direction="in"/>
+    </method>
+    <method name="Publish">
+      <arg name="element_path" type="o" direction="in"/>
+      <arg name="model" type="q" direction="in"/>
+      <arg name="options" type="{sv}" direction="in"/>
+      <arg name="data" type="ay" direction="in"/>
+    </method>
+    <property name="Features" type="{sv}" access="read"/>
+    <property name="Beacon" type="b" access="read"/>
+    <property name="IvUpdate" type="b" access="read"/>
+    <property name="IvIndex" type="u" access="read"/>
+    <property name="SecondsSinceLastHeard" type="u" access="read"/>
+    <property name="Addresses" type="aq" access="read"/>
+    <property name="SequenceNumber" type="u" access="read"/>
+  </interface>
+  <interface name="org.bluez.mesh.Management1">
+    <method name="UnprovisionedScan">
+      <arg name="options" type="{sv}" direction="in"/>
+    </method>
+    <method name="UnprovisionedScanCancel"/>
+    <method name="AddNode">
+      <arg name="uuid" type="ay" direction="in"/>
+      <arg name="options" type="{sv}" direction="in"/>
+    </method>
+    <method name="CreateSubnet">
+      <arg name="net_index" type="q" direction="in"/>
+    </method>
+    <method name="ImportSubnet">
+      <arg name="net_index" type="q" direction="in"/>
+      <arg name="net_key" type="ay" direction="in"/>
+    </method>
+    <method name="UpdateSubnet">
+      <arg name="net_index" type="q" direction="in"/>
+    </method>
+    <method name="DeleteSubnet">
+      <arg name="net_index" type="q" direction="in"/>
+    </method>
+    <method name="SetKeyPhase">
+      <arg name="net_index" type="q" direction="in"/>
+      <arg name="phase" type="y" direction="in"/>
+    </method>
+    <method name="CreateAppKey">
+      <arg name="net_index" type="q" direction="in"/>
+      <arg name="app_index" type="q" direction="in"/>
+    </method>
+    <method name="ImportAppKey">
+      <arg name="net_index" type="q" direction="in"/>
+      <arg name="app_index" type="q" direction="in"/>
+      <arg name="app_key" type="ay" direction="in"/>
+    </method>
+    <method name="UpdateAppKey">
+      <arg name="app_index" type="q" direction="in"/>
+    </method>
+    <method name="DeleteAppKey">
+      <arg name="app_index" type="q" direction="in"/>
+    </method>
+    <method name="ImportRemoteNode">
+      <arg name="primary" type="q" direction="in"/>
+      <arg name="count" type="y" direction="in"/>
+      <arg name="device_key" type="ay" direction="in"/>
+    </method>
+    <method name="DeleteRemoteNode">
+      <arg name="primary" type="q" direction="in"/>
+      <arg name="count" type="y" direction="in"/>
+    </method>
+    <method name="ExportKeys">
+      <arg name="keys" type="{sv}" direction="out"/>
+    </method>
+  </interface>
+  <interface name="org.bluez.mesh.Application1">
+    <method name="JoinComplete">
+      <arg name="token" type="t" direction="in"/>
+    </method>
+    <method name="JoinFailed">
+      <arg name="reason" type="s" direction="in"/>
+    </method>
+    <property name="CompanyID" type="q" access="read"/>
+    <property name="ProductID" type="q" access="read"/>
+    <property name="VersionID" type="q" access="read"/>
+    <property name="CRPL" type="q" access="read"/>
+  </interface>
+  <interface name="org.bluez.mesh.Element1">
+    <method name="MessageReceived">
+      <arg name="source" type="q" direction="in"/>
+      <arg name="key_index" type="q" direction="in"/>
+      <arg name="destination" type="v" direction="in"/>
+      <arg name="data" type="ay" direction="in"/>
+    </method>
+    <method name="DevKeyMessageReceived">
+      <arg name="source" type="q" direction="in"/>
+      <arg name="remote" type="b" direction="in"/>
+      <arg name="net_index" type="q" direction="in"/>
+      <arg name="data" type="ay" direction="in"/>
+    </method>
+    <method name="UpdateModelConfiguration">
+      <arg name="model_id" type="q" direction="in"/>
+      <arg name="config" type="{sv}" direction="in"/>
+    </method>
+    <property name="Index" type="y" access="read"/>
+    <property name="Models" type="a(q{sv})" access="read"/>
+    <property name="VendorModels" type="a(qq{sv})" access="read"/>
+    <property name="Location" type="q" access="read"/>
+  </interface>
+  <interface name="org.bluez.mesh.Attention1">
+    <method name="SetTimer">
+      <arg name="element_index" type="y" direction="in"/>
+      <arg name="time" type="q" direction="in"/>
+    </method>
+    <method name="GetTimer">
+      <arg name="element" type="q" direction="in"/>
+      <arg name="time" type="q" direction="out"/>
+    </method>
+  </interface>
+  <interface name="org.bluez.mesh.Provisioner1">
+    <method name="ScanResult">
+      <arg name="rssi" type="n" direction="in"/>
+      <arg name="data" type="ay" direction="in"/>
+      <arg name="option" type="{sv}" direction="in"/>
+    </method>
+    <method name="RequestProvData">
+      <arg name="count" type="y" direction="in"/>
+      <arg name="net_index" type="q" direction="out"/>
+      <arg name="unicast" type="q" direction="out"/>
+    </method>
+    <method name="AddNodeComplete">
+      <arg name="uuid" type="ay" direction="in"/>
+      <arg name="unicast" type="q" direction="in"/>
+      <arg name="count" type="y" direction="in"/>
+    </method>
+    <method name="AddNodeFailed">
+      <arg name="uuid" type="ay" direction="in"/>
+      <arg name="reason" type="s" direction="in"/>
+    </method>
+  </interface>
+  <interface name="org.bluez.mesh.ProvisionAgent1">
+    <method name="PrivateKey">
+      <arg name="key" type="ay" direction="out"/>
+    </method>
+    <method name="PublicKey">
+      <arg name="key" type="ay" direction="out"/>
+    </method>
+    <method name="DisplayString">
+      <arg name="value" type="s" direction="in"/>
+    </method>
+    <method name="DisplayNumeric">
+      <arg name="type" type="s" direction="in"/>
+      <arg name="number" type="u" direction="in"/>
+    </method>
+    <method name="PromptNumeric">
+      <arg name="type" type="s" direction="in"/>
+    </method>
+    <method name="PromptStatic">
+      <arg name="type" type="s" direction="in"/>
+      <arg name="auth" type="ay" direction="out"/>
+    </method>
+    <method name="Cancel"/>
+    <property name="Capabilities" type="as" access="read"/>
+    <property name="OutOfBandInfo" type="as" access="read"/>
+    <property name="URI" type="s" access="read"/>
+  </interface>
+</node>  

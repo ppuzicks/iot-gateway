@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<node>
+  <interface name="org.bluez.Input1">
+    <property name="ReconnectMode" type="s" access="read"/>
+  </interface>
+</node>

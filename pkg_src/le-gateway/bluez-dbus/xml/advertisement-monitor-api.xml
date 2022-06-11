@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<node>
+  <interface name="org.bluez.AdvertisementMonitor1">
+    <method name="Release"/>
+    <method name="Activate"/>
+    <method name="DeviceFound">
+      <arg name="device" type="o" direction="in"/>
+    </method>
+    <method name="DeviceLost">
+      <arg name="device" type="o" direction="in"/>
+    </method>
+    <property name="Type" type="s" access="read"/>
+    <property name="RSSILowThreshold" type="n" access="read"/>
+    <property name="RSSIHighThreshold" type="n" access="read"/>
+    <property name="RSSILowTimeout" type="q" access="read"/>
+    <property name="RSSIHighTimeout" type="q" access="read"/>
+    <property name="RSSISamplingPeriod" type="q" access="read"/>
+    <property name="Patterns" type="a{sv}" access="read"/>
+  </interface>
+  <interface name="org.bluez.AdvertisementMonitorManager1">
+    <method name="RegisterMonitor">
+      <arg name="application" type="o" direction="in"/>
+    </method>
+    <method name="UnregisterMonitor">
+      <arg name="application" type="o" direction="in"/>
+    </method>
+    <property name="SupportedMonitorTypes" type="as" access="read"/>
+    <property name="SupportedFeatures" type="as" access="read"/>
+  </interface>
+</node>

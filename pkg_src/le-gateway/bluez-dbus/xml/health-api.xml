@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<node>
+  <interface name="org.bluez.HealthManager1">
+    <method name="CreateApplication">
+      <arg name="config" type="{sv}" direction="in"/>
+    </method>
+    <method name="DestroyApplication">
+      <arg name="application" type="o" direction="in"/>
+    </method>
+  </interface>
+  <interface name="org.bluez.HealthDevice1">
+    <method name="Echo">
+      <arg name="ret" type="b" direction="out"/>
+    </method>
+    <method name="CreateChannel">
+      <arg name="application" type="o" direction="in"/>
+      <arg name="configuration" type="s" direction="in"/>
+      <arg name="objpath" type="o" direction="out"/>
+    </method>
+    <method name="DestroyChannel">
+      <arg name="channel" type="o" direction="in"/>
+    </method>
+    <signal name="ChannelConnected">
+      <arg name="channel" type="o"/>
+    </signal>
+    <signal name="ChannelDelete">
+      <arg name="channel" type="o"/>
+    </signal>
+    <property name="MainChannel" type="o" access="read"/>
+  </interface>
+  <interface name="org.bluez.HealthChannel1">
+    <method name="Acquire">
+      <arg name="fd" type="h" direction="out"/>
+    </method>
+    <property name="Type" type="s" access="read"/>
+    <property name="Device" type="o" access="read"/>
+    <property name="Application" type="o" access="read"/>
+  </interface>
+</node>

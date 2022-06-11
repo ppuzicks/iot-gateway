@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<node>
+  <interface name="org.bluez.Media1">
+    <method name="RegisterEndpoint">
+      <arg name="endpoint" type="o" direction="in"/>
+      <arg name="properties" type="{sv}" direction="in"/>
+    </method>
+    <method name="UnregisterEndpoint">
+      <arg name="endpoint" type="o" direction="in"/>
+    </method>
+    <method name="RegisterPlayer">
+      <arg name="player" type="o" direction="in"/>
+      <arg name="properties" type="{sv}" direction="in"/>
+    </method>
+    <method name="UnregisterPlayer">
+      <arg name="player" type="o" direction="in"/>
+    </method>
+    <method name="RegisterApplication">
+      <arg name="root" type="o" direction="in"/>
+      <arg name="options" type="{sv}" direction="in"/>
+    </method>
+    <method name="UnregisterApllication">
+      <arg name="application" type="o" direction="in"/>
+    </method>
+  </interface>
+  <interface name="org.bluez.MediaPlayer1">
+    <method name="Play"/>
+    <method name="Pause"/>
+    <method name="Stop"/>
+    <method name="Next"/>
+    <method name="Previous"/>
+    <method name="FastForward"/>
+    <method name="Rewind"/>
+    <method name="Press">
+      <arg name="avc_key" type="y" direction="in"/>
+    </method>
+    <method name="Hold">
+      <arg name="avc_key" type="y" direction="in"/>
+    </method>
+    <method name="Release"/>
+    <property name="Equalizer" type="s" access="readwrite"/>
+    <property name="Repeat" type="s" access="readwrite"/>
+    <property name="Shuffle" type="s" access="readwrite"/>
+    <property name="Scan" type="s" access="readwrite"/>
+    <property name="Status" type="s" access="read"/>
+    <property name="Position" type="u" access="read"/>
+    <property name="Track" type="{sv}" access="read"/>
+    <property name="Device" type="o" access="read"/>
+    <property name="Name" type="s" access="read"/>
+    <property name="Type" type="s" access="read"/>
+    <property name="Subtype" type="s" access="read"/>
+    <property name="Browsable" type="b" access="read"/>
+    <property name="Searchable" type="b" access="read"/>
+    <property name="Playlist" type="o" access="read"/>
+  </interface>
+  <interface name="org.bluez.MediaFolder1">
+    <method name="Search">
+      <arg name="value" type="s" direction="in"/>
+      <arg name="filter" type="{sv}" direction="in"/>
+      <arg name="obj" type="o" direction="out"/>
+    </method>
+    <method name="ListItems">
+      <arg name="filter" type="{sv}" direction="in"/>
+      <arg name="list_items" type="a(o{sv})" direction="out"/>
+    </method>
+    <property name="NumberOfItems" type="u" access="read"/>
+    <property name="Name" type="s" access="read"/>
+  </interface>
+  <interface name="org.bluez.MediaItem1">
+    <method name="Play"/>
+    <method name="AddtoNowPlaying"/>
+    <property name="Player" type="o" access="read"/>
+    <property name="Name" type="s" access="read"/>
+    <property name="Type" type="s" access="read"/>
+    <property name="FolderType" type="s" access="read"/>
+    <property name="Playable" type="b" access="read"/>
+    <property name="Metadata" type="{sb}" access="read"/>
+  </interface>
+  <interface name="org.bluez.MediaEndpoint1">
+    <method name="SetConfiguration">
+      <arg name="transport" type="o" direction="in"/>
+      <arg name="properties" type="{sv}" direction="in"/>
+    </method>
+    <method name="SelectConfiguration">
+      <arg name="capabilities" type="ay" direction="in"/>
+      <arg name="configuration" type="ay" direction="out"/>
+    </method>
+    <method name="ClearConfiguration">
+      <arg name="transport" type="o" direction="in"/>
+    </method>
+    <method name="Release"/>
+    <property name="UUID" type="s" access="read"/>
+    <property name="Codec" type="y" access="read"/>
+    <property name="Capabilities" type="ay" access="read"/>
+    <property name="Device" type="o" access="read"/>
+    <property name="DelayReporting" type="b" access="read"/>
+  </interface>
+  <interface name="org.bluez.MediaTransport1">
+    <method name="Acquire">
+      <arg name="fd" type="h" direction="out"/>
+      <arg name="mtu_read" type="q" direction="out"/>
+      <arg name="mtu_write" type="q" direction="out"/>
+    </method>
+    <method name="TryAcquire">
+      <arg name="fd" type="h" direction="out"/>
+      <arg name="mtu_read" type="q" direction="out"/>
+      <arg name="mtu_write" type="q" direction="out"/>
+    </method>
+    <method name="Release"/>
+    <property name="Device" type="o" access="read"/>
+    <property name="UUID" type="s" access="read"/>
+    <property name="Codec" type="y" access="read"/>
+    <property name="Configuration" type="ay" access="read"/>
+    <property name="State" type="s" access="read"/>
+    <property name="Delay" type="q" access="readwrite"/>
+    <property name="Volume" type="q" access="readwrite"/>
+    <property name="Endpoint" type="o" access="read"/>
+</node>
