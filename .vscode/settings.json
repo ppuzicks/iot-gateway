@@ -2,6 +2,7 @@
   "C_Cpp.files.exclude": {
     "**/.vscode": true,
     "**/build_dir/*": true,
-    "**/output/*": true
-  }  
+    "**/output/*": true,
+    "output_*/*":true,
+  }
 }
