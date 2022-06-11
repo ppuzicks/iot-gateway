@@ -11,7 +11,7 @@
     </method>
     <signal name="PropertyChanged">
       <arg name="name" type="s"/>
-      <arg name="value" type+"v"/>
+      <arg name="value" type="v"/>
     </signal>
     <property name="Time" type="t" access="read"/>
     <property name="TimeUpdate" type="s" access="readwrite"/>
