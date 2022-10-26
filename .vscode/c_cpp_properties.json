@@ -4,10 +4,8 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/output_m2-zero/staging/usr/include/**"
             ],
             "defines": [],
-            "compilerPath": "${workspaceFolder}/output_m2-zero/host/bin/arm-buildroot-linux-gnueabihf-gcc",
             "cStandard": "gnu11",
             "cppStandard": "c++17",
             "intelliSenseMode": "linux-gcc-arm"
