@@ -1,1 +1,1 @@
-../ap6212/nvram.txt
+brcmfmac43430-sdio.AP6212.txt
