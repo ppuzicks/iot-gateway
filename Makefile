@@ -9,6 +9,9 @@ VERSION_DEV := "dev$(VERSION_DATE)"
 
 TARGETS := $(notdir $(patsubst %_defconfig,%,$(wildcard $(DEFCONFIG_DIR)/*_defconfig)))
 TARGETS_CONFIG := $(notdir $(patsubst %_defconfig,%-config,$(wildcard $(DEFCONFIG_DIR)/*_defconfig)))
+TARGETS_MENUCONFIG := $(notdir $(patsubst %_defconfig,%-menuconfig,$(wildcard $(DEFCONFIG_DIR)/*_defconfig)))
+TARGETS_SAVECONFIG := $(notdir $(patsubst %_defconfig,%-saveconfig,$(wildcard $(DEFCONFIG_DIR)/*_defconfig)))
+TARGETS_CLEAN := $(notdir $(patsubst %_defconfig,%-clean,$(wildcard $(DEFCONFIG_DIR)/*_defconfig)))
 
 # Set O variable if not already done on the command line
 ifneq ("$(origin O)", "command line")
@@ -26,32 +29,34 @@ all: $(TARGETS)
 $(RELEASE_DIR):
 	mkdir -p $(RELEASE_DIR)
 
-menuconfig:
-	@echo "menuconfig $*"
-	$(MAKE) -C $(BUILDROOT) O=$(O) BR2_EXTERNAL=$(BUILDROOT_EXTERNAL) "menuconfig"
 
-savedefconfig:
-	@echo "config $*"
-	$(MAKE) -C $(BUILDROOT) O=$(O) BR2_EXTERNAL=$(BUILDROOT_EXTERNAL) "savedefconfig"
+$(TARGETS_MENUCONFIG): %-menuconfig:
+	@echo "menuconfig $*"
+	$(MAKE) -C $(BUILDROOT) O=$(O)/$* BR2_EXTERNAL=$(BUILDROOT_EXTERNAL) "menuconfig"
+
+$(TARGETS_SAVECONFIG): %-saveconfig:
+	@echo "savedefconfig $*"
+	$(MAKE) -C $(BUILDROOT) O=$(O)/$* BR2_EXTERNAL=$(BUILDROOT_EXTERNAL) "savedefconfig"
 
 $(TARGETS_CONFIG): %-config:
 	@echo "config $*"
-	$(MAKE) -C $(BUILDROOT) O=$(O) BR2_EXTERNAL=$(BUILDROOT_EXTERNAL) "$*_defconfig"
+	$(MAKE) -C $(BUILDROOT) O=$(O)/$* BR2_EXTERNAL=$(BUILDROOT_EXTERNAL) "$*_defconfig"
 
 $(TARGETS): %: $(RELEASE_DIR) %-config
 	@echo "build $@"
-	$(MAKE) -C $(BUILDROOT) O=$(O) BR2_EXTERNAL=$(BUILDROOT_EXTERNAL) VERSION_DEV=$(VERSION_DEV)
-	cp -f $(O)/images/sdcard.img $(RELEASE_DIR)/
+	$(MAKE) -C $(BUILDROOT) O=$(O)/$@ BR2_EXTERNAL=$(BUILDROOT_EXTERNAL) VERSION_DEV=$(VERSION_DEV)
+	cp -f $(O)/$@/images/sdcard.img $(RELEASE_DIR)/$@_sdcard.img
 
 	# Do not clean when building for one target
 ifneq ($(words $(filter $(TARGETS),$(MAKECMDGOALS))), 1)
 	@echo "clean $@"
-	$(MAKE) -C $(BUILDROOT) O=$(O) BR2_EXTERNAL=$(BUILDROOT_EXTERNAL) clean
+	$(MAKE) -C $(BUILDROOT) O=$(O)/$@ BR2_EXTERNAL=$(BUILDROOT_EXTERNAL) clean
 endif
 	@echo "finished $@"
 
-clean:
-	$(MAKE) -C $(BUILDROOT) O=$(O) BR2_EXTERNAL=$(BUILDROOT_EXTERNAL) clean
+$(TARGETS_CLEAN): %-clean:
+	$(MAKE) -C $(BUILDROOT) O=$(O)/$* BR2_EXTERNAL=$(BUILDROOT_EXTERNAL) clean
+
 
 help:
 	@echo "Supported targets: $(TARGETS)"
