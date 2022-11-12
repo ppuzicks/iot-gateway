@@ -18,3 +18,8 @@ $ BR2_EXTERNAL=../ make O=<build-dir> haoyu_a20_marsboard_defconfig
 # Generate the uboot script
 $ ubootName/tools/mkimage -C none -A arm -T script -d $BR2_EXTERNAL_PATH/board/RK3308/boot.cmd $BINARIES_DIR/boot.scr
 ```
+
+UWE5622관련 patch
+https://github.com/armbian/build/tree/master/patch/kernel/archive/rockchip64-5.19
+https://forum.armbian.com/topic/23999-unisoc-uwe5621ds-on-rk3566-device-calling-orange-pi-experts/
+https://github.com/armbian/build/blob/master/patch/kernel/archive/rockchip64-6.0/add-driver-for-Motorcomm-YT85xx%2BPHYs.patch
