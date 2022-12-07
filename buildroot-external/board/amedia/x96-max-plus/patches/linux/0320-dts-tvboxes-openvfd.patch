@@ -1,0 +1,165 @@
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxl-s905w-tx3-mini.dts b/arch/arm64/boot/dts/amlogic/meson-gxl-s905w-tx3-mini.dts
+index ae0d8d7b1..e9849e99a 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxl-s905w-tx3-mini.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-gxl-s905w-tx3-mini.dts
+@@ -78,6 +78,12 @@ wlan@5,7 {
+ 			};
+ 		};
+ 	};
++
++	openvfd {
++		compatible = "open,vfd";
++		dev_name = "openvfd";
++		status = "okay";
++	};
+ };
+ 
+ &ir {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-p212.dts b/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-p212.dts
+index c2bc7cec4..38ac4aeed 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-p212.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-p212.dts
+@@ -93,6 +93,12 @@ codec-0 {
+ 			};
+ 		};
+ 	};
++
++	openvfd {
++		compatible = "open,vfd";
++		dev_name = "openvfd";
++		status = "okay";
++	};
+ };
+ 
+ &acodec {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-sm1-ac2xx.dtsi b/arch/arm64/boot/dts/amlogic/meson-sm1-ac2xx.dtsi
+index 46a34731f..105c7e4de 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-sm1-ac2xx.dtsi
++++ b/arch/arm64/boot/dts/amlogic/meson-sm1-ac2xx.dtsi
+@@ -127,6 +127,12 @@ wifi32k: wifi32k {
+ 		clock-frequency = <32768>;
+ 		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
+ 	};
++
++	openvfd: openvfd {
++		compatible = "open,vfd";
++		dev_name = "openvfd";
++		status = "okay";
++	};
+ };
+ 
+ &cec_AO {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-sm1-h96-max-x3.dts b/arch/arm64/boot/dts/amlogic/meson-sm1-h96-max-x3.dts
+index 36b66acf8..f486bb4b5 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-sm1-h96-max-x3.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-sm1-h96-max-x3.dts
+@@ -82,12 +82,6 @@ vddgpu: regulator-vddgpu {
+ 		vin-supply = <&ao_5v>;
+ 		regulator-always-on;
+ 	};
+-
+-	openvfd {
+-		compatible = "open,vfd";
+-		dev_name = "openvfd";
+-                status = "okay";
+-        };
+ };
+ 
+ &vddcpu {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-sm1-hk1box-vontar-x3.dts b/arch/arm64/boot/dts/amlogic/meson-sm1-hk1box-vontar-x3.dts
+index 404138f96..c5d8c2c7b 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-sm1-hk1box-vontar-x3.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-sm1-hk1box-vontar-x3.dts
+@@ -82,12 +82,6 @@ vddgpu: regulator-vddgpu {
+ 		vin-supply = <&ao_5v>;
+ 		regulator-always-on;
+ 	};
+-
+-	openvfd {
+-		compatible = "open,vfd";
+-		dev_name = "openvfd";
+-		status = "okay";
+-	};
+ };
+ 
+ &vddcpu {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-sm1-sei610.dts b/arch/arm64/boot/dts/amlogic/meson-sm1-sei610.dts
+index a5d79f2f7..583a25dcd 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-sm1-sei610.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-sm1-sei610.dts
+@@ -330,6 +330,12 @@ wifi32k: wifi32k {
+ 		clock-frequency = <32768>;
+ 		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
+ 	};
++
++	openvfd {
++		compatible = "open,vfd";
++		dev_name = "openvfd";
++		status = "okay";
++	};
+ };
+ 
+ &arb {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-sm1-tx3-bz.dts b/arch/arm64/boot/dts/amlogic/meson-sm1-tx3-bz.dts
+index 895e52368..a67cc81ed 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-sm1-tx3-bz.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-sm1-tx3-bz.dts
+@@ -92,12 +92,6 @@ vddgpu: regulator-vddgpu {
+ 		vin-supply = <&ao_5v>;
+ 		regulator-always-on;
+ 	};
+-
+-	openvfd {
+-		compatible = "open,vfd";
+-		dev_name = "openvfd";
+-                status = "okay";
+-        };
+ };
+ 
+ &vddcpu {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-sm1-tx3-qz.dts b/arch/arm64/boot/dts/amlogic/meson-sm1-tx3-qz.dts
+index 84cc07adb..47d5a86fb 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-sm1-tx3-qz.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-sm1-tx3-qz.dts
+@@ -92,12 +92,6 @@ vddgpu: regulator-vddgpu {
+ 		vin-supply = <&ao_5v>;
+ 		regulator-always-on;
+ 	};
+-
+-	openvfd {
+-		compatible = "open,vfd";
+-		dev_name = "openvfd";
+-                status = "okay";
+-        };
+ };
+ 
+ &vddcpu {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-sm1-ugoos-x3.dts b/arch/arm64/boot/dts/amlogic/meson-sm1-ugoos-x3.dts
+index 7c6fd8a08..16480a38a 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-sm1-ugoos-x3.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-sm1-ugoos-x3.dts
+@@ -283,3 +283,7 @@ usid: usid@18 {
+ 		reg = <0x12 0x10>;
+ 	};
+ };
++
++&openvfd {
++	status = "disabled";
++};
+diff --git a/arch/arm64/boot/dts/amlogic/meson-sm1-x96-max-plus.dts b/arch/arm64/boot/dts/amlogic/meson-sm1-x96-max-plus.dts
+index c1755e13b..eadf814b9 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-sm1-x96-max-plus.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-sm1-x96-max-plus.dts
+@@ -84,12 +84,6 @@ vddgpu: regulator-vddgpu {
+ 		vin-supply = <&ao_5v>;
+ 		regulator-always-on;
+ 	};
+-
+-	openvfd {
+-		compatible = "open,vfd";
+-		dev_name = "openvfd";
+-		status = "okay";
+-	};
+ };
+ 
+ &vddcpu {
