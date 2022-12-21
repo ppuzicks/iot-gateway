@@ -12,7 +12,7 @@ TARGETS_CONFIG := $(notdir $(patsubst %_defconfig,%-config,$(wildcard $(DEFCONFI
 TARGETS_MENUCONFIG := $(notdir $(patsubst %_defconfig,%-menuconfig,$(wildcard $(DEFCONFIG_DIR)/*_defconfig)))
 TARGETS_SAVECONFIG := $(notdir $(patsubst %_defconfig,%-saveconfig,$(wildcard $(DEFCONFIG_DIR)/*_defconfig)))
 TARGETS_CLEAN := $(notdir $(patsubst %_defconfig,%-clean,$(wildcard $(DEFCONFIG_DIR)/*_defconfig)))
-TARGETS_KERNEL_MENUCONFIG := $(notdir $(patsubst %_defconfig,%-kernelmenuconfig,$(wildcard $(DEFCONFIG_DIR)/*_defconfig)))
+TARGETS_KERNEL_MENUCONFIG := $(notdir $(patsubst %_defconfig,%-kernelconfig,$(wildcard $(DEFCONFIG_DIR)/*_defconfig)))
 
 # Set O variable if not already done on the command line
 ifneq ("$(origin O)", "command line")
@@ -23,14 +23,14 @@ endif
 
 .NOTPARALLEL: $(TARGETS) $(TARGETS_CONFIG) all
 
-.PHONY: $(TARGETS) $(TARGETS_CONFIG) all clean help
+.PHONY: $(TARGETS) $(TARGETS_CONFIG) all distclean help
 
 all: $(TARGETS)
 
 $(RELEASE_DIR):
 	mkdir -p $(RELEASE_DIR)
 
-$(TARGETS_KERNEL_MENUCONFIG): %-kernelmenuconfig:
+$(TARGETS_KERNEL_MENUCONFIG): %-kernelconfig:
 	@echo "kernel-menuconfig $*"
 	$(MAKE) -C $(BUILDROOT) O=$(O)/$* BR2_EXTERNAL=$(BUILDROOT_EXTERNAL) "linux-menuconfig"
 
@@ -61,10 +61,15 @@ endif
 $(TARGETS_CLEAN): %-clean:
 	$(MAKE) -C $(BUILDROOT) O=$(O)/$* BR2_EXTERNAL=$(BUILDROOT_EXTERNAL) clean
 
+distclean:
+	@echo "clean output dirs"
+	rm -rf output/*
+	rm -rf release/*
 
 help:
 	@echo "Supported targets: $(TARGETS)"
 	@echo "Run 'make <target>' to build a target image."
-	@echo "Run 'make all' to build all target images."
-	@echo "Run 'make clean' to clean the build output."
-	@echo "Run 'make <target>-config' to configure buildroot for a target."
+	@echo "Run 'make <target>-menuconfig' to configure buildroot for a target."
+	@echo "Run 'make <target>-kernelconfig' to configure kernel for a target."
+	@echo "Run 'make <target>-clean' to clean the target's build output."
+	@echo "Run 'make distclean' to clean the all build output."
