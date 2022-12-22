@@ -1,8 +1,6 @@
-Index: u-boot-2021.07/arch/arm/dts/Makefile
-===================================================================
---- u-boot-2021.07.orig/arch/arm/dts/Makefile
-+++ u-boot-2021.07/arch/arm/dts/Makefile
-@@ -562,7 +562,8 @@ dtb-$(CONFIG_MACH_SUN7I) += \
+--- a/arch/arm/dts/Makefile	2022-12-22 18:27:05.132319631 +0900
++++ b/arch/arm/dts/Makefile	2022-12-22 18:27:25.911588845 +0900
+@@ -586,7 +586,8 @@
  	sun7i-a20-primo73.dtb \
  	sun7i-a20-wexler-tab7200.dtb \
  	sun7i-a20-wits-pro-a20-dkt.dtb \

@@ -4,6 +4,7 @@
 #include "sunxi-common-regulators.dtsi"
 
 #include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/interrupt-controller/irq.h>
 
 / {
 	model = "HAOYU Electronics Marsboard A20";
@@ -15,6 +16,17 @@
 
 	chosen {
 		stdout-path = "serial0:115200n8";
+	};
+
+	hdmi-connector {
+		compatible = "hdmi-connector";
+		type = "c";
+
+		port {
+			hdmi_con_in: endpoint {
+				remote-endpoint = <&hdmi_out_con>;
+			};
+		};
 	};
 
 	leds {
@@ -46,6 +58,10 @@
 	status = "okay";
 };
 
+&de {
+	status = "okay";
+};
+
 &codec {
 	status = "okay";
 };
@@ -58,12 +74,21 @@
 	status = "okay";
 };
 
+/*
 &emac_sram {
 	status = "okay";
 };
 
 &emac {
 	phy = <&phy1>;
+	status = "okay";
+};
+*/
+&gmac {
+	pinctrl-names = "default";
+	pinctrl-0 = <&gmac_mii_pins>;
+	phy-handle = <&phy1>;
+	phy-mode = "mii";
 	status = "okay";
 };
 
@@ -79,9 +104,16 @@
 	status = "okay";
 };
 
+/*
 &mdio {
 	status = "okay";
 
+	phy1: ethernet-phy@1 {
+		reg = <1>;
+	};
+};
+*/
+&gmac_mdio {
 	phy1: ethernet-phy@1 {
 		reg = <1>;
 	};
@@ -149,26 +181,12 @@
 	status = "okay";
 };
 
-&nfc {
-	pinctrl-names = "default";
-	pinctrl-0 = <&nand_pins_a>, <&nand_cs0_pins_a>, <&nand_rb0_pins_a>;
+&hdmi {
 	status = "okay";
+};
 
-	nand@0 {
-		reg = <0>;
-		allwinner,rb = <0>;
-		nand-ecc-mode = "hw";
-		nand-on-flash-bbt;
-
-		partitions {
-			compatible = "fixed-partitions";
-			#address-cells = <1>;
-			#size-cells = <2>;
-
-			partition@0 {
-				label = "Data";
-				reg = <0x00000000 0x1 0x00000000>;
-			};
-		};
+&hdmi_out {
+	hdmi_out_con: endpoint {
+		remote-endpoint = <&hdmi_con_in>;
 	};
 };
