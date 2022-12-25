@@ -1,0 +1,9 @@
+config BR2_PACKAGE_UWE5622
+	bool "uwe5622"
+	depends on BR2_LINUX_KERNEL
+	help
+	  A standalone driver for the UWE5622.
+
+
+comment "uwe5622 needs a Linux kernel to be built"
+	depends on !BR2_LINUX_KERNEL
