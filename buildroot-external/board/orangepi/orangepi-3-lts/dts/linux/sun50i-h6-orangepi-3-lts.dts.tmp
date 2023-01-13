@@ -178,6 +178,32 @@
 	bus-width = <4>;
 	non-removable;
 	status = "okay";
+
+	uwe-bsp {
+		compatible = "unisoc,uwe_bsp";
+		keep-power-on;
+		data-irq;
+		//adma-tx;
+		adma-rx;
+		//blksz-512;
+		status = "okay";
+	};
+
+	sprd-wlan {
+		compatible = "sprd,uwe5622-wifi";
+		status = "okay";
+	};
+	
+	sprd-mtty {
+		compatible = "sprd,mtty";
+		sprd,name = "ttyBT";
+		status = "okay";
+	};
+	
+	btlmp {
+		compatible = "allwinner,sunxi-btlmp";
+		bt-hostwake = <&r_pio 1 1 GPIO_ACTIVE_HIGH>; /* PM1 */
+	};
 };
 
 &mmc2 {
@@ -370,7 +396,7 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&uart1_pins>, <&uart1_rts_cts_pins>;
 	uart-has-rtscts;
-	status = "disable";
+	status = "enable";
 };
 
 &usb2otg {
