@@ -1,0 +1,6 @@
+config BR2_PACKAGE_DT_OVERLAY_SUNXI
+  bool  "dt-overlay-sunxi"
+  help
+    This package contains DT overlays files (dtbo) for sunxi
+    platforms.
+    
