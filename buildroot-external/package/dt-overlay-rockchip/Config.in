@@ -1,0 +1,6 @@
+config BR2_PACKAGE_DT_OVERLAY_ROCKCHIP
+  bool  "dt-overlay-rockchip"
+  help
+    This package contains DT overlays files (dtbo) for rockchip
+    platforms.
+    

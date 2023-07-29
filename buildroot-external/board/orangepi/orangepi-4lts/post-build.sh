@@ -23,12 +23,28 @@ generic_getty()
 }
 
 PARTUUID="$($HOST_DIR/bin/uuidgen)"
+PARTBOOTUUID="$($HOST_DIR/bin/uuidgen)"
 
-install -d "$TARGET_DIR/boot/extlinux/"
+install -d "$BINARIES_DIR/extlinux/"
+
+## install uEnv.txt
+sed -e "s/%PARTUUID%/$PARTUUID/g" \
+	"$BR2_EXTERNAL_IOTGATEWAY_PATH/board/orangepi/orangepi-4lts/uEnv.txt" > "$BINARIES_DIR/uEnv.txt"
 
 sed -e "$(generic_getty)" \
 	-e "s/%LINUXIMAGE%/$(linux_image)/g" \
 	-e "s/%PARTUUID%/$PARTUUID/g" \
-	"$BR2_EXTERNAL_IOTGATEWAY_PATH/board/orangepi/orangepi-4lts/extlinux.conf" > "$TARGET_DIR/boot/extlinux/extlinux.conf"
+	"$BR2_EXTERNAL_IOTGATEWAY_PATH/board/orangepi/orangepi-4lts/extlinux.conf" > "$BINARIES_DIR/extlinux/extlinux.conf"
 
-sed "s/%PARTUUID%/$PARTUUID/g" "$BR2_EXTERNAL_IOTGATEWAY_PATH/board/orangepi/orangepi-4lts/genimage.cfg" > "$BINARIES_DIR/genimage.cfg"
+sed -e "s/%LINUXIMAGE%/$(linux_image)/g" \
+	-e"s/%PARTBOOTUUID%/$PARTBOOTUUID/g" \
+	-e "s/%PARTUUID%/$PARTUUID/g" \
+	"$BR2_EXTERNAL_IOTGATEWAY_PATH/board/orangepi/orangepi-4lts/genimage.cfg" > "$BINARIES_DIR/genimage.cfg"
+
+## install dt overlay
+install -d $TARGET_DIR/boot/allwinner/overlay
+#install -D $BINARIES_DIR/allwinner/overlay/* $TARGET_DIR/boot/allwinner/overlay
+
+
+## install boot.scr
+#cp -f $BINARIES_DIR/boot.scr $TARGET_DIR/boot/boot.scr

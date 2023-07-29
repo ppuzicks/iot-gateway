@@ -20,8 +20,6 @@ itest.b *0x10028 == 0x03 && echo "U-boot loaded from SPI"
 
 echo "Boot script loaded from ${devtype}"
 
-echo "test ${devtype} ${devnum} ${load_addr}"
-
 if test -e ${devtype} ${devnum} ${prefix}uEnv.txt; then
 	echo "Find uEnv.txt"
 	load ${devtype} ${devnum} ${load_addr} ${prefix}uEnv.txt

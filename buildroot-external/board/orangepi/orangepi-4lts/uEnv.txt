@@ -1,0 +1,4 @@
+verbosity=1
+bootlogo=false
+rootdev=PARTUUID=%PARTUUID%
+rootfstype=ext4
