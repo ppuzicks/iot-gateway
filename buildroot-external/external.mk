@@ -1,1 +1,1 @@
-include $(sort $(wildcard $(BR2_EXTERNAL_IOTGATEWAY_PATH)/package/*/*.mk))
+include $(sort $(wildcard $(BR2_EXTERNAL_MINE_PATH)/package/*/*.mk))

@@ -88,3 +88,7 @@ https://blog.karaolidis.com/ultimate-home-server-part-3/
 
 2. boot.cmd 파일 수정
 
+
+
+# 참고 (패치파일들)
+https://gitlab.manjaro.org/manjaro-arm/packages/core/linux-opi
