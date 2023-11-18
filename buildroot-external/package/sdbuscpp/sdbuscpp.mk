@@ -3,7 +3,7 @@
 # sdbus-c++
 #
 ################################################################################
-SDBUSCPP_VERSION := 1.1.0
+SDBUSCPP_VERSION := 1.4.0
 SDBUSCPP_SITE := $(call github,Kistler-Group,sdbus-cpp,v$(SDBUSCPP_VERSION))
 SDBUSCPP_DEPENDENCIES := systemd
 SDBUSCPP_INSTALL_STAGING := YES
