@@ -29,17 +29,17 @@ install -d "$BINARIES_DIR/extlinux/"
 
 ## install uEnv.txt
 sed -e "s/%PARTUUID%/$PARTUUID/g" \
-	"$BR2_EXTERNAL_IOTGATEWAY_PATH/board/orangepi/orangepi-4lts/uEnv.txt" > "$BINARIES_DIR/uEnv.txt"
+	"$BR2_EXTERNAL_MINE_PATH/board/orangepi/orangepi4-lts/uEnv.txt" > "$BINARIES_DIR/uEnv.txt"
 
 sed -e "$(generic_getty)" \
 	-e "s/%LINUXIMAGE%/$(linux_image)/g" \
 	-e "s/%PARTUUID%/$PARTUUID/g" \
-	"$BR2_EXTERNAL_IOTGATEWAY_PATH/board/orangepi/orangepi-4lts/extlinux.conf" > "$BINARIES_DIR/extlinux/extlinux.conf"
+	"$BR2_EXTERNAL_MINE_PATH/board/orangepi/orangepi4-lts/extlinux.conf" > "$BINARIES_DIR/extlinux/extlinux.conf"
 
 sed -e "s/%LINUXIMAGE%/$(linux_image)/g" \
 	-e"s/%PARTBOOTUUID%/$PARTBOOTUUID/g" \
 	-e "s/%PARTUUID%/$PARTUUID/g" \
-	"$BR2_EXTERNAL_IOTGATEWAY_PATH/board/orangepi/orangepi-4lts/genimage.cfg" > "$BINARIES_DIR/genimage.cfg"
+	"$BR2_EXTERNAL_MINE_PATH/board/orangepi/orangepi4-lts/genimage.cfg" > "$BINARIES_DIR/genimage.cfg"
 
 ## install dt overlay
 install -d $TARGET_DIR/boot/allwinner/overlay

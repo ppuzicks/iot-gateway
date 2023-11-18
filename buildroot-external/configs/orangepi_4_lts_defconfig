@@ -4,10 +4,9 @@ BR2_cortex_a72_a53=y
 
 BR2_CCACHE=y
 
-#BR2_GLOBAL_PATCH_DIR="$(BR2_EXTERNAL_MINE_PATH)/board/orangepi/orangepi-4lts/patches"
 BR2_PACKAGE_HOST_LINUX_HEADERS_CUSTOM_5_15=y
 BR2_ROOTFS_DEVICE_CREATION_DYNAMIC_MDEV=y
-BR2_ROOTFS_OVERLAY="$(BR2_EXTERNAL_MINE_PATH)/board/orangepi/orangepi-4lts/rootfs_overlay"
+BR2_ROOTFS_OVERLAY="$(BR2_EXTERNAL_MINE_PATH)/board/orangepi/orangepi4-lts/rootfs_overlay"
 
 # Toolchain
 BR2_TOOLCHAIN=y
@@ -33,11 +32,11 @@ BR2_TARGET_ARM_TRUSTED_FIRMWARE_IMAGES=""
 
 # Bootloader
 BR2_TARGET_UBOOT=y
-BR2_TARGET_UBOOT_PATCH="$(BR2_EXTERNAL_MINE_PATH)/board/orangepi/orangepi-4-lts/patches/uboot-2022.04-rk3399"
+BR2_TARGET_UBOOT_PATCH="$(BR2_EXTERNAL_MINE_PATH)/board/orangepi/orangepi4-lts/patches/rockchip64-v2022.04"
 BR2_TARGET_UBOOT_BUILD_SYSTEM_KCONFIG=y
 BR2_TARGET_UBOOT_CUSTOM_VERSION=y
 BR2_TARGET_UBOOT_CUSTOM_VERSION_VALUE="2022.04"
-BR2_TARGET_UBOOT_BOARD_DEFCONFIG="orangepi-4-rk3399_defconfig"
+BR2_TARGET_UBOOT_BOARD_DEFCONFIG="orangepi-4-rk3399"
 BR2_TARGET_UBOOT_CONFIG_FRAGMENT_FILES="$(BR2_EXTERNAL_MINE_PATH)/board/orangepi/orangepi4-lts/uboot.config"
 #BR2_TARGET_UBOOT_CUSTOM_DTS_PATH="$(BR2_EXTERNAL_MINE_PATH)/board/orangepi/orangepi-4lts/dts/uboot/rk3399-orangepi-4lts.dts $(BR2_EXTERNAL_MINE_PATH)/board/orangepi/orangepi-4lts/dts/uboot/rk3399-orangepi-4lts-u-boot.dtsi"
 BR2_TARGET_UBOOT_NEEDS_DTC=y
@@ -78,7 +77,7 @@ BR2_PACKAGE_HOST_UBOOT_TOOLS_BOOT_SCRIPT=y
 BR2_PACKAGE_HOST_UBOOT_TOOLS_BOOT_SCRIPT_SOURCE="$(BR2_EXTERNAL_MINE_PATH)/board/orangepi/orangepi4-lts/boot.cmd"
 
 #BR2_ROOTFS_POST_BUILD_SCRIPT="$(BR2_EXTERNAL_MINE_PATH)/board/orangepi/orangepi-4lts/post-build-old.sh"
-BR2_ROOTFS_POST_BUILD_SCRIPT="$(BR2_EXTERNAL_MINE_PATH)/board/orangepi/orangepi-4lts/post-build.sh"
+BR2_ROOTFS_POST_BUILD_SCRIPT="$(BR2_EXTERNAL_MINE_PATH)/board/orangepi/orangepi4-lts/post-build.sh"
 BR2_ROOTFS_POST_IMAGE_SCRIPT="support/scripts/genimage.sh"
 BR2_ROOTFS_POST_SCRIPT_ARGS="-c $(BINARIES_DIR)/genimage.cfg"
 
