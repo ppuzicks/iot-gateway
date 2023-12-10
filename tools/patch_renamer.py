@@ -19,7 +19,11 @@ def patch_rename(path:str, dest:str):
 
       src_file = line.strip()
       file_name = src_file.split('/')
-      dst_file = '{0:04d}'.format(count) + '_' + file_name[0] + '_' + file_name[1]
+      
+      if file_name[0] != 'patches.armbian':
+        continue
+
+      dst_file = '{0:04d}'.format(count) + '_' + file_name[1]
       copyfile(path+'/'+src_file, dest+'/'+dst_file)
       count += 1
   f.close()
