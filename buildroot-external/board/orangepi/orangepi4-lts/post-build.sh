@@ -45,6 +45,8 @@ sed -e "s/%LINUXIMAGE%/$(linux_image)/g" \
 install -d $TARGET_DIR/boot/allwinner/overlay
 #install -D $BINARIES_DIR/allwinner/overlay/* $TARGET_DIR/boot/allwinner/overlay
 
+## install systemd bluetooth service for uwe5622
+#install -m 644 $BR2_EXTERNAL_MINE_PATH/board/orangepi/orangepi4-lts/sprd-bluetooth.service $TARGET_DIR/lib/systemd/system/
 
 ## install boot.scr
 #cp -f $BINARIES_DIR/boot.scr $TARGET_DIR/boot/boot.scr

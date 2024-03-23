@@ -4,5 +4,8 @@
     "**/build_dir/*": true,
     "**/output/*": true,
     "output_*/*":true,
+  },
+  "files.associations": {
+    "*.orig": "c"
   }
 }
