@@ -1,0 +1,5 @@
+config BR2_PACKAGE_UWE5622
+  bool "UWE5622 Wi-Fi/BT driver"
+  depends on BR2_LINUX_KERNEL
+  help
+    Unisoc UWE5622 Wi-Fi/BT driver for Linux.
